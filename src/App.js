@@ -52,58 +52,58 @@ class App extends React.Component {
     console.log('score', score)
 
     return (
-      <div className="App">
-        <Route 
-          exact path="/"
-          render = {
-            props => {
-              return (
-                <>
-                  <h1>Welcome to quiz family</h1>
-                  <Link to="/quiz/1">Click here to start</Link>
-                </>
-              )
+        <div className="App">
+          <Route 
+            exact path="/"
+            render = {
+              props => {
+                return (
+                  <>
+                    <h1>Welcome to quiz family</h1>
+                    <Link to="/quiz/1">Click here to start</Link>
+                  </>
+                )
+              }
             }
-          }
-        />
-        <Route 
-          exact path="/quiz/:quizID"
-          render = {
-            props => {
-              return (
-                <>
-                  <div className="progress-bar">
-                    <ProgressBar percentage={this.state.percentage}/>
-                  </div>
-                  <Quiz 
-                    {...props}
-                    scoreUpdate={this.scoreUpdate}
-                    saveResponses={this.saveResponses}
-                    updateProgress={this.updateProgress}
-                  />
-                </>
-              )
+          />
+          <Route 
+            exact path="/quiz/:quizID"
+            render = {
+              props => {
+                return (
+                  <>
+                    <div className="progress-bar">
+                      <ProgressBar percentage={this.state.percentage}/>
+                    </div>
+                    <Quiz 
+                      {...props}
+                      scoreUpdate={this.scoreUpdate}
+                      saveResponses={this.saveResponses}
+                      updateProgress={this.updateProgress}
+                    />
+                  </>
+                )
+              }
             }
-          }
-        />
-        <Route 
-          exact path="/result"
-          render = {
-            props => {
-              return (
-                <>
-                  <Result 
-                    {...props}
-                    score = {score}
-                    total_question = {total_question}
+          />
+          <Route 
+            exact path="/result"
+            render = {
+              props => {
+                return (
+                  <>
+                    <Result 
+                      {...props}
+                      score = {score}
+                      total_question = {total_question}
 
-                  />
-                </>
-              )
+                    />
+                  </>
+                )
+              }
             }
-          }
-        />
-      </div>
+          />
+        </div>
     );
   }
 }
