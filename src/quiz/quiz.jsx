@@ -45,6 +45,7 @@ export default class Quiz extends React.Component {
         const { ques, ans, isCorrect, quizID } = this.state
         this.props.scoreUpdate(isCorrect)
         this.props.saveResponses(ques, ans)
+        this.props.updateProgress()
         this.setState({showTrueFalse: true})
         setTimeout(this.redirect, 1000)
     }

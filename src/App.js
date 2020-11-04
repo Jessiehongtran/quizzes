@@ -2,7 +2,8 @@ import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import { quizzes } from './data/quizData';
 import Quiz from './quiz/quiz';
-import Result from './result/result'
+import Result from './result/result';
+import ProgressBar from './progressBar/progressBar';
 import './App.css';
 
 
@@ -12,10 +13,12 @@ class App extends React.Component {
     this.state = {
       total_question: quizzes.length,
       responses: [],
-      score: 0
+      score: 0,
+      percentage: 0
     }
     this.scoreUpdate = this.scoreUpdate.bind(this)
     this.saveResponses = this.saveResponses.bind(this)
+    this.updateProgress = this.updateProgress.bind(this)
   }
 
   scoreUpdate(isCorrect){
@@ -33,6 +36,12 @@ class App extends React.Component {
           answer: ans
         }
       ]
+    })
+  }
+
+  updateProgress(){
+    this.setState({
+      percentage: this.state.percentage + 1/(this.state.total_question)*100
     })
   }
 
@@ -63,10 +72,14 @@ class App extends React.Component {
             props => {
               return (
                 <>
+                  <div className="progress-bar">
+                    <ProgressBar percentage={this.state.percentage}/>
+                  </div>
                   <Quiz 
                     {...props}
                     scoreUpdate={this.scoreUpdate}
                     saveResponses={this.saveResponses}
+                    updateProgress={this.updateProgress}
                   />
                 </>
               )
