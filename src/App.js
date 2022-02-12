@@ -4,6 +4,7 @@ import { quizzes } from './data/quizData';
 import Quiz from './quiz/quiz';
 import Result from './result/result';
 import ProgressBar from './progressBar/progressBar';
+import Cmi5AU from 'react-cmi5';
 import './App.css';
 
 
@@ -52,6 +53,7 @@ class App extends React.Component {
     console.log('score', score)
 
     return (
+      <Cmi5AU>
         <div className="App">
           <Route 
             exact path="/"
@@ -104,6 +106,7 @@ class App extends React.Component {
             }
           />
         </div>
+      </Cmi5AU>
     );
   }
 }
